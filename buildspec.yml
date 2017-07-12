@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Downloading JUnit JAR file...
+      - mkdir lib
+      - wget https://pilotfiber.dl.sourceforge.net/project/findbugs/findbugs/3.0.1/findbugs-3.0.1.zip
+      - unzip findbugs-3.0.1.zip
+      - cp findbugs-3.0.1/lib/findbugs-ant.jar ./lib/findbugs-ant.jar
+      - wget http://central.maven.org/maven2/junit/junit/4.10/junit-4.10.jar -O ./lib/junit-4.10.jar
+  pre_build:
+    commands:
+      - echo Creating directories...
+      - mkdir build
+      - mkdir build/classes
+      - mkdir build/jar           		  
+  build:
+    commands:
+      - echo Build started on `date`
+      - ant		  
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+    files:
+      - build/jar/HelloWorld.jar

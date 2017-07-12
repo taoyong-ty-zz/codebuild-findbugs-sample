@@ -25,7 +25,7 @@ public class TestMessageUtil {
   public void testSetMessage() {
     System.out.println("Inside testSetMessage()");
     String newMsg = "John";
-    messageUtil.setMessage(new String(newMsg));
+    messageUtil.setMessage(newMsg);
     assertEquals(newMsg, messageUtil.printMessage());
   }
 }
